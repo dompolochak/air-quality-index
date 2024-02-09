@@ -1,0 +1,53 @@
+.AirQuality{
+    display: flex;
+    justify-content: center;
+    /* border-width: thick; */
+    /* columns: 2 auto; */
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+    margin-top: 1em;
+    position: relative;
+    height: min-content;
+}
+
+.AQIValue{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3em auto 3em auto;
+    font-size: xx-large;
+    font-weight: 700;
+    /* text-align: left; */
+    width: 25%;
+
+}
+
+.LocationInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin: 0 auto 0 auto;
+    width: 25%;
+}
+
+.Green{
+    color: green;
+}
+.Yellow{
+    color: #F1DB00;
+}
+.Red{
+    color: red;
+}
+.Orange{
+    color: orange;
+}
+.Purple{
+    color: purple;
+}
+
+.Maroon{
+    color: maroon;
+}
