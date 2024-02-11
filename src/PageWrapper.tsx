@@ -6,12 +6,18 @@ import { fetchAQIByCoord } from './helpers/fetch-aqi-by-coord';
 import { fetchAQIByCity } from './helpers/fetch-aqi-by-city';
 import Search from './Search';
 import './styles/PageWrapper.css';
+import LoadingPlaceHolder from './LoadingPlaceHolder';
+import ErrorMessage from './ErrorMessage';
+
+
 
 function PageWrapper() {
     const [aqiData, setAqiData] = useState<IAQIData>();
     const [error, setError] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const onSubmit = async (searchTerm: string) => {
+        setIsLoading(true);
         const data = await fetchAQIByCity(searchTerm);
 
         if(data === undefined){
@@ -22,7 +28,7 @@ function PageWrapper() {
             setAqiData(data); 
         }
 
-        //setAqiData(data);
+        setIsLoading(false);
     }
 
 
@@ -32,6 +38,7 @@ function PageWrapper() {
                 navigator.geolocation.getCurrentPosition(async position => {
                     const data = await fetchAQIByCoord(position.coords.latitude, position.coords.longitude);
                     setAqiData(data); 
+                    setIsLoading(false);
                 });
             }
 
@@ -48,7 +55,10 @@ function PageWrapper() {
     return (
         <div className='PageWrapper'>
             <Search onSubmit={onSubmit}/>
-            {aqiData && !error ?  <AirQuality aqiData={aqiData}/> : <span>Error!</span>}
+            <div className='AirQualityContainer'>
+                {isLoading ? <LoadingPlaceHolder/> : error || !aqiData ? <ErrorMessage/> : <AirQuality aqiData={aqiData}/>}
+            </div>
+            
         </div>
         
     )

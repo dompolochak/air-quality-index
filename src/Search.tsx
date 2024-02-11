@@ -18,11 +18,15 @@ function Search(props: IProps) {
     return (
         <div className='Search'>
             <form onSubmit={handleSubmit}>
-                <input 
-                    type="text"    
-                    placeholder='Search for a city'
-                    onChange={(e) => setSearchTerm(e.target.value)} />
-                <input type="submit"/>
+                <div className='SearchBar'>
+                    <input 
+                        type="search"    
+                        placeholder='Search for a city'
+                        className='Input'
+                        onChange={(e) => setSearchTerm(e.target.value)} />
+                    <input type="submit" className='Submit' value='Search'/>
+                </div>
+
             </form>
         </div>
     )

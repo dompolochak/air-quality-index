@@ -19,9 +19,9 @@ function AirQuality(props: IProps) {
                 <span>{message}</span> 
             </div>
             <div className='LocationInfo'>
-                <span>{aqiData.city}</span>
-                <span>{aqiData.lng}</span>
-                <span>{aqiData.lat}</span>  
+                <span><strong>Station: </strong>{aqiData.city}</span>
+                <span><strong>Longitude: </strong>{aqiData.lng}</span>
+                <span><strong>Latitude: </strong> {aqiData.lat}</span>  
             </div>  
         </div>}
 

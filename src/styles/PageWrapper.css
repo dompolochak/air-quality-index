@@ -1,7 +1,26 @@
 .PageWrapper{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    height:100%;
     flex-direction: column;
-    margin: 5em;
-    position:relative;
+    position: relative;
+    align-items: center;
+    background: url('../../public/images/25501.jpg');
+    background-size: cover;
+}
+
+.AirQualityContainer{
+    display: flex;
+    justify-content: center;
+    /* border-width: thick; */
+    /* columns: 2 auto; */
+    /* border: 2px solid black; */
+    width: 68%;
+    /* align-items: stretch; */
+    /* position: relative; */
+    /* overflow: auto; */
+    margin-top: 2%;
+    background: white;
+    box-shadow: 1px 1px 1px black;
+    border-radius: 2em;
 }

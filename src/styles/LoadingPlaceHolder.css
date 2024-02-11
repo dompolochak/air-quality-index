@@ -1,0 +1,12 @@
+.LoadingPlaceHolder{
+    margin: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Message{
+    margin-bottom: 1em;
+    font-size: larger;
+    font-weight: bold;
+}

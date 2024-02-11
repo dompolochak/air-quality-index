@@ -1,35 +1,42 @@
 .AirQuality{
     display: flex;
+    flex-direction: row;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    width:100%;
     justify-content: center;
-    /* border-width: thick; */
-    /* columns: 2 auto; */
-    border: 2px solid black;
-    width: 50%;
-    margin: auto;
-    margin-top: 1em;
-    position: relative;
-    height: min-content;
+} 
+
+@media only screen and (max-width: 600px) {
+    .AirQuality{
+        flex-direction: column;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .AQIValue{
+        margin: 1% auto 2% auto !important;
+    }
+    .LocationInfo{
+        text-align: center !important;
+    }
 }
 
 .AQIValue{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: 3em auto 3em auto;
-    font-size: xx-large;
-    font-weight: 700;
-    /* text-align: left; */
-    width: 25%;
+    margin: auto 10% auto 2%;
+    /* margin-right: 10%;
+    margin-left: 2%; */
+    font-size: x-large;
 
 }
 
 .LocationInfo{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: left;
-    margin: 0 auto 0 auto;
-    width: 25%;
+    margin-right: 2%;
+    margin-left: 10%;
 }
 
 .Green{
@@ -50,4 +57,8 @@
 
 .Maroon{
     color: maroon;
+}
+
+.Green, .Yellow, .Red, .Orange, .Purple, .Maroon{
+    font-weight: bold;
 }
