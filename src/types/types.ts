@@ -4,8 +4,3 @@ export interface IAQIData{
     lng: number,
     lat: number
 }
-
-export interface ILocation{
-    lat: number,
-    lng: number
-}

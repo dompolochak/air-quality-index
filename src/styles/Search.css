@@ -27,6 +27,7 @@ form{
 
 .Submit{
     width: 30%;
+    min-width: min-content;
     border: none;
     border-radius: 0 2em 2em 0;
     background: #E5C100;

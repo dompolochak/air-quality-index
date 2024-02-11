@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react'
+import {useMemo, memo} from 'react'
 import {IAQIData} from './types/types'
 import './styles/AirQuality.css';
 import { getAQILevel } from './helpers/get-aqi-level';
@@ -6,7 +6,7 @@ import { getAQILevel } from './helpers/get-aqi-level';
 interface IProps{
     aqiData: IAQIData
 }
-function AirQuality(props: IProps) {
+const AirQuality = memo(function AirQuality(props: IProps) {
     const {aqiData} = props;
 
     const [className, message] = useMemo(() => getAQILevel(aqiData.aqi), [aqiData])
@@ -15,6 +15,7 @@ function AirQuality(props: IProps) {
     <>
         {aqiData && <div className='AirQuality'>
             <div className='AQIValue'>
+                <h2>Air Quality Index</h2>
                 <span className={className}>{aqiData.aqi}</span>   
                 <span>{message}</span> 
             </div>
@@ -27,6 +28,6 @@ function AirQuality(props: IProps) {
 
     </>
   )
-}
+});
 
 export default AirQuality;

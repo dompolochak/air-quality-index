@@ -25,18 +25,19 @@
     display: flex;
     flex-direction: column;
     margin: auto 10% auto 2%;
-    /* margin-right: 10%;
-    margin-left: 2%; */
     font-size: x-large;
 
+}
+
+.AQIValue >h2{
+    font-size: large;
 }
 
 .LocationInfo{
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin-right: 2%;
-    margin-left: 10%;
+    margin: auto 2% auto 10%;
 }
 
 .Green{

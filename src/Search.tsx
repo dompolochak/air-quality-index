@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState,memo} from 'react';
 import './styles/Search.css';
 
 interface IProps{
     onSubmit: (arg: string) => void;
 }
 
-function Search(props: IProps) {
+const Search = memo(function Search(props: IProps) {
 
     const {onSubmit} = props;
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -30,6 +30,6 @@ function Search(props: IProps) {
             </form>
         </div>
     )
-}
+});
 
 export default Search;
