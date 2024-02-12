@@ -12,20 +12,20 @@ import ErrorMessage from './ErrorMessage';
 
 const PageWrapper = memo(function PageWrapper() {
     const [aqiData, setAqiData] = useState<IAQIData>();
-    const [error, setError] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     const onSubmit = async (searchTerm: string) => {
         try{
             if(error){
-                setError(false);
+                setError('');
             }
             setIsLoading(true);
             const data = await fetchAQIByCity(searchTerm);
             setAqiData(data);
         }
         catch{
-            setError(true);
+            setError('Unable to load AQI for this location');
         }
         finally{
             setIsLoading(false);
@@ -34,7 +34,7 @@ const PageWrapper = memo(function PageWrapper() {
 
 
     useEffect(()=> {
-        async function getAQI() {
+        (function getAQI() {
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(async position => {
                     try{
@@ -42,22 +42,30 @@ const PageWrapper = memo(function PageWrapper() {
                         setAqiData(data); 
                     }
                     catch{
-                        setError(true);
+                        setError('Unable to load AQI for this location');
                     }
                     finally{
-                        setIsLoading(false);    
-                    }  
+                        setIsLoading(false);   
+                    }
+                }, 
+                ()=> {
+                    setError('Location settings turned off: Try searching for a city');
+                    setIsLoading(false);
                 });
             }
-        }   
-        getAQI();  
+            else{
+                setError('Geolocation is not supported by this browser');
+                setIsLoading(false); 
+            }        
+        })();   
     },[]);
+
 
     return (
         <div className='PageWrapper'>
             <Search onSubmit={onSubmit}/>
             <div className='AirQualityContainer'>
-                {isLoading ? <LoadingPlaceHolder/> : error || !aqiData ? <ErrorMessage/> : <AirQuality aqiData={aqiData}/>}
+                {isLoading ? <LoadingPlaceHolder/> : error || !aqiData ? <ErrorMessage error={error}/> : <AirQuality aqiData={aqiData}/>} 
             </div>
             
         </div>

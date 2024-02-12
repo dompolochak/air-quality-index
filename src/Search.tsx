@@ -5,9 +5,8 @@ interface IProps{
     onSubmit: (arg: string) => void;
 }
 
-const Search = memo(function Search(props: IProps) {
+const Search = memo(function Search({onSubmit}: IProps) {
 
-    const {onSubmit} = props;
     const [searchTerm, setSearchTerm] = useState<string>('');
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

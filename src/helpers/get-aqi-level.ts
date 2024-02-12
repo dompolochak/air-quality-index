@@ -1,5 +1,5 @@
 
-
+//Determines color coding of AQI
 export function getAQILevel(aqi: number): [string,string]{
 
     if(aqi<= 50){

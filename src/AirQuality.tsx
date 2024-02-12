@@ -6,8 +6,7 @@ import { getAQILevel } from './helpers/get-aqi-level';
 interface IProps{
     aqiData: IAQIData
 }
-const AirQuality = memo(function AirQuality(props: IProps) {
-    const {aqiData} = props;
+const AirQuality = memo(function AirQuality({aqiData}: IProps) {
 
     const [className, message] = useMemo(() => getAQILevel(aqiData.aqi), [aqiData])
 

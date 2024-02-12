@@ -1,10 +1,14 @@
 import {memo} from 'react'
 import './styles/ErrorMessage.css';
 
-const ErrorMessage = memo(function ErrorMessage() {
+interface IProps{
+  error: string
+}
+
+const ErrorMessage = memo(function ErrorMessage({error}:IProps) {
   return (
     <div className='ErrorMessage'>
-      <span>Unable to load AQI data for this location</span>
+      <span>{error}</span>
     </div>
   )
 });
