@@ -43,13 +43,14 @@ const PageWrapper = memo(function PageWrapper() {
                         setAqiData(data); 
                     }
                     catch{
+                        //if fetch fails
                         setError('Unable to load AQI for this location');
                     }
                     finally{
                         setIsLoading(false);   
                     }
                 }, 
-                //Error callback
+                //Error callback (for getCurrentPosition)
                 ()=> {
                     setError('Location settings turned off: Try searching for a city');
                     setIsLoading(false);
