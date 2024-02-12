@@ -37,6 +37,7 @@ const PageWrapper = memo(function PageWrapper() {
         (function getAQI() {
             if(navigator.geolocation){
                 navigator.geolocation.getCurrentPosition(async position => {
+                    //Success callback
                     try{
                         const data = await fetchAQIByCoord(position.coords.latitude, position.coords.longitude);
                         setAqiData(data); 
@@ -48,6 +49,7 @@ const PageWrapper = memo(function PageWrapper() {
                         setIsLoading(false);   
                     }
                 }, 
+                //Error callback
                 ()=> {
                     setError('Location settings turned off: Try searching for a city');
                     setIsLoading(false);
